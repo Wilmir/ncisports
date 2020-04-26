@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
+  root 'static_pages#home'
+  get '/home', to: 'static_pages#home'
+  get '/signup', to: 'customers#new'
   resources :customers
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  root 'application#hello'
 end
