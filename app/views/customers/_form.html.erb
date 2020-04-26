@@ -9,7 +9,13 @@
       
       <%= f.label :email %>
       <%= f.email_field :email, placeholder:"name@example.com", class:'form-control' %>
-  
+
+      <%= f.label :password %>
+      <%= f.password_field :password, placeholder:"Minimum six characters", class:'form-control' %>
+
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation, placeholder:"Re-enter your password", class:'form-control' %>
+
       <%= f.label :address %>
       <%= f.text_area :address, placeholder:"Full Address",  class: 'form-control' %>
       
