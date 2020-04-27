@@ -8,11 +8,11 @@ Customer.create!(name:  "Wilmir Nicanor",
              admin: true)
 
 # Generate a bunch of additional users.
-99.times do |n|
+20.times do |n|
   name  = Faker::Name.unique.name
   email = "customer-#{n+1}@ncisports.com"
-  address = Faker::Address.full_address,
-  mobile_number = Faker::PhoneNumber.cell_phone,
+  address = Faker::Address.full_address
+  mobile_number = Faker::PhoneNumber.cell_phone
   password = "password"
   Customer.create!(name:  name,
                email: email,
@@ -20,4 +20,17 @@ Customer.create!(name:  "Wilmir Nicanor",
                mobile_number: mobile_number,
                password:              password,
                password_confirmation: password)
+end
+
+# Generate a bunch of issues
+customers = Customer.order(:created_at).take(5)
+20.times do |n|
+    issue_type = "Refund"
+    title = Faker::Commerce.product_name
+    description = Faker::Lorem.paragraph(sentence_count: 2)
+    customers.each do |customer|
+        customer.issues.create!(issue_type:  issue_type,
+                                title: title,
+                                description: description)
+    end
 end

@@ -1,0 +1,8 @@
+<li id="issue-<%= issue.id %>">
+  <%= link_to gravatar_for(issue.customer, size: 50), issue.customer %>
+  <span class="customer"><%= link_to issue.customer.name, issue.customer %></span>
+  <span class="description"><%= issue.description %></span>
+  <span class="timestamp">
+    Flagged <%= time_ago_in_words(issue.created_at) %> ago.
+  </span>
+</li>
