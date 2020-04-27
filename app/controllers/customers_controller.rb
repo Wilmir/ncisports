@@ -28,6 +28,7 @@ class CustomersController < ApplicationController
 
     respond_to do |format|
       if @customer.save
+        log_in @customer
         flash[:success] = "Welcome to NCI Sports!"
         format.html { redirect_to @customer}
         format.json { render :show, status: :created, location: @customer }
