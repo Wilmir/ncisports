@@ -1,5 +1,8 @@
 class CustomersController < ApplicationController
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
+  before_action :logged_in_customer, only: [:edit, :update]
+  before_action :correct_customer,   only: [:edit, :update]
+
 
   # GET /customers
   # GET /customers.json
@@ -44,7 +47,8 @@ class CustomersController < ApplicationController
   def update
     respond_to do |format|
       if @customer.update(customer_params)
-        format.html { redirect_to @customer, notice: 'Customer was successfully updated.' }
+        flash[:success] = "Profile updated"
+        format.html { redirect_to @customer}
         format.json { render :show, status: :ok, location: @customer }
       else
         format.html { render :edit }
@@ -73,4 +77,20 @@ class CustomersController < ApplicationController
     def customer_params
       params.require(:customer).permit(:name, :email, :password, :password_confirmation, :address)
     end
+
+    # Checks if customer is logged in
+    def logged_in_customer
+      unless logged_in?
+        store_location
+        flash[:danger] = "Please log in."
+        redirect_to login_url
+      end
+    end
+
+    # Confirms the correct customer.
+    def correct_customer
+        @customer = Customer.find(params[:id])
+        redirect_to(root_url) unless current_user?(@customer)
+    end
+
 end

@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     if(customer && customer.authenticate(params[:session][:password]))
       log_in customer
       params[:session][:remember_me] == '1' ? remember(customer) : forget(customer)
-      redirect_to customer
+      redirect_back_or customer
     else 
       #Create an error messag
       flash.now[:danger] = 'Invalid email/password combination'

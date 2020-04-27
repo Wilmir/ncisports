@@ -1,4 +1,11 @@
 <% provide(:title, "Sign Up") %>
+<% provide(:button_text, "Create my account") %>
 <h1>Sign up</h1>
 
-<%= render 'form', customer: @customer %>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-6">
+    <%= render 'form'%>
+    </div>
+  </div>
+</div>
