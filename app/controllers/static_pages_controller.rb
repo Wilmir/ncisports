@@ -4,4 +4,8 @@ class StaticPagesController < ApplicationController
       redirect_to current_user
     end
   end
+
+  def about
+  
+  end
 end
