@@ -1,14 +1,13 @@
 @import "bootstrap";
 
 /* mixins, variables, etc. */
-
-$gray-medium-light: #eaeaea;
-
 @mixin box_sizing {
   -moz-box-sizing:    border-box;
   -webkit-box-sizing: border-box;
   box-sizing:         border-box;
 }
+
+$gray-medium-light: #eaeaea;
 
 section { 
     overflow: auto;
@@ -85,6 +84,26 @@ footer ul li {
   margin-left: 15px;
 }
 
+@media (max-width: 800px) {
+  footer {
+    small {
+      display: block;
+      float: none;
+      margin-bottom: 1em;
+    }
+    ul {
+      float: none;
+      padding: 0;
+      li {
+        float: none;
+        margin-left: 0;
+      }
+    }
+  }
+}
+
+
+
 /* miscellaneous */
 .debug_dump {
   clear: both;
@@ -133,12 +152,6 @@ aside {
 
 /* forms */
 
-input, textarea, select, .uneditable-input {
-  border: 1px solid #bbb;
-  width: 100%;
-  margin-bottom: 15px;
-  @include box_sizing;
-}
 
 input {
   height: auto !important;

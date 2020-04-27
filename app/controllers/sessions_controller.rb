@@ -6,6 +6,7 @@ class SessionsController < ApplicationController
     customer = Customer.find_by(email: params[:session][:email].downcase)
     if(customer && customer.authenticate(params[:session][:password]))
       log_in customer
+      remember customer
       redirect_to customer
     else 
       #Create an error messag
@@ -15,7 +16,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    log_out
+    log_out if logged_in?
     redirect_to root_url
   end
 
