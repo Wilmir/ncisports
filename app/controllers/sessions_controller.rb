@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     customer = Customer.find_by(email: params[:session][:email].downcase)
     if(customer && customer.authenticate(params[:session][:password]))
       log_in customer
-      remember customer
+      params[:session][:remember_me] == '1' ? remember(customer) : forget(customer)
       redirect_to customer
     else 
       #Create an error messag
