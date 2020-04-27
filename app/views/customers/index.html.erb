@@ -7,13 +7,8 @@
 <%= will_paginate(@things, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer, class: 'pagination-sm') %>
 </nav>
 
-<ul class="users">
-  <% @customers.each do |customer| %>
-    <li>
-      <%= gravatar_for customer, size: 50 %>
-      <%= link_to customer.name, customer %>
-    </li>
-  <% end %>
+<ul class="customers">
+  <%= render @customers %>
 </ul>
 
 <nav class =  'row justify-content-end'>

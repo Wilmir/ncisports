@@ -3,7 +3,8 @@ Customer.create!(name:  "Wilmir Nicanor",
              email: "wbnicanor01@gmail.com",
              address: "Dublin, Ireland",
              password:              "password",
-             password_confirmation: "password")
+             password_confirmation: "password",
+             admin: true)
 
 # Generate a bunch of additional users.
 199.times do |n|

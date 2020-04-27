@@ -2,12 +2,12 @@ class CustomersController < ApplicationController
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
   before_action :logged_in_customer, only: [:index, :edit, :update]
   before_action :correct_customer,   only: [:edit, :update]
-
+  before_action  :admin_user, only: :destroy
 
   # GET /customers
   # GET /customers.json
   def index
-    @customers = Customer.paginate(page: params[:page])
+    @customers = Customer.paginate(page: params[:page], per_page: 10)
   end
 
   # GET /customers/1
@@ -62,7 +62,8 @@ class CustomersController < ApplicationController
   def destroy
     @customer.destroy
     respond_to do |format|
-      format.html { redirect_to customers_url, notice: 'Customer was successfully destroyed.' }
+      flash[:success] = "The customer profile has been deleted!"
+      format.html { redirect_to customers_url}
       format.json { head :no_content }
     end
   end
@@ -91,6 +92,11 @@ class CustomersController < ApplicationController
     def correct_customer
         @customer = Customer.find(params[:id])
         redirect_to(root_url) unless current_user?(@customer)
+    end
+
+    # Confirms an admin user.
+    def admin_user
+      redirect_to(root_url) unless current_user.admin
     end
 
 end
