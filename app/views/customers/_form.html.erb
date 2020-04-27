@@ -15,6 +15,9 @@
 
       <%= f.label :address %>
       <%= f.text_area :address, placeholder:"Full Address",  class: 'form-control' %>
+
+      <%= f.label :mobile_number %>
+      <%= f.text_field :mobile_number, placeholder:"Optional Mobile Number",  class: 'form-control' %>
       
       <%= f.submit yield(:button_text), class: "btn btn-primary" %>
       <% end %>

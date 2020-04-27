@@ -6,6 +6,9 @@
       <%= gravatar_for @customer %>
       <%= @customer.name %>
       </h1>
+      <% if current_user.admin || current_user?(@customer) %>
+        <p><%= @customer.mobile_number %></p>
+      <% end %>
     </section>
   </aside>
 </div>
