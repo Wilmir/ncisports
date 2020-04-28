@@ -80,15 +80,6 @@ class CustomersController < ApplicationController
       params.require(:customer).permit(:name, :email, :password, :password_confirmation, :address, :mobile_number)
     end
 
-    # Checks if customer is logged in
-    def logged_in_customer
-      unless logged_in?
-        store_location
-        flash[:danger] = "Please log in."
-        redirect_to login_url
-      end
-    end
-
     # Confirms the correct customer.
     def correct_customer
         @customer = Customer.find(params[:id])

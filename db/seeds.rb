@@ -29,7 +29,6 @@ customers.each do |customer|
     10.times do |n|
         issue_type = "Refund"
         issue_rand = rand(1..5)
-        
         case issue_rand
         when 1
             issue_type = "Book A Game"
@@ -43,7 +42,16 @@ customers.each do |customer|
             issue_type = "Other"
         end
 
-        status = Faker::Subscription.status
+        status = "New"
+        status_rand = rand(1..3)
+        case status_rand
+        when 1
+            status = "New"
+        when 2
+            status = "Pending"
+        when 3
+            status = "Resolved"
+        end
         title = Faker::Sports::Football.competition + " : " + Faker::Sports::Football.team + " vs "  + Faker::Sports::Football.team 
         description = Faker::TvShows::TheITCrowd.quote
         customer.issues.create!(issue_type:  issue_type,

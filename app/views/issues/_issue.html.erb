@@ -1,14 +1,12 @@
 <% badgetype = "badge-primary" %>
 
 <% case issue.status.downcase %>
-<% when "active" %>
-  <% badgetype = "badge-success" %>
-<% when "pending" %>
-  <% badgetype = "badge-warning" %>
-<% when "idle" %>
-  <% badgetype = "badge-secondary" %>
-<% when "blocked" %>
+<% when "new" %>
   <% badgetype = "badge-danger" %>
+<% when "pending" %>
+  <% badgetype = "badge-secondary" %>
+<% when "resolved" %>
+  <% badgetype = "badge-success" %>
 <% end %>
 
 <div class="card mb-3", id="issue-<%=issue.id %>">

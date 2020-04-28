@@ -1,8 +1,6 @@
 class StaticPagesController < ApplicationController
   def home
-    if current_user
-      redirect_to current_user
-    end
+    @issue = current_user.issues.build if logged_in?
   end
 
   def about
