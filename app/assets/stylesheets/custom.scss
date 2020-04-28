@@ -9,6 +9,16 @@
 
 $gray-medium-light: #eaeaea;
 
+body{
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.main{
+  flex: 1;
+}
+
 section { 
     overflow: auto;
 }
@@ -100,7 +110,13 @@ footer ul li {
       }
     }
   }
+
+
+
 }
+
+
+
 
 
 
@@ -144,7 +160,7 @@ aside {
 .gravatar {
   float: left;
   margin-right: 10px;
-  border-radius: 25px;
+  border-radius: 40px;
 }
 
 .gravatar_edit {

@@ -1,6 +1,6 @@
 class CustomersController < ApplicationController
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
-  before_action :logged_in_customer, only: [:edit, :update]
+  before_action :logged_in_customer, only: [:index, :edit, :update]
   before_action :correct_customer,   only: [:edit, :update]
   before_action  :admin_user, only: :destroy
 
@@ -14,6 +14,7 @@ class CustomersController < ApplicationController
   # GET /customers/1.json
   def show
     @issues = @customer.issues.paginate(page: params[:page], per_page: 10)
+    @issue = current_user.issues.build if logged_in?
   end
 
   # GET /customers/new

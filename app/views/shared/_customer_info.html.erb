@@ -1,4 +1,10 @@
-<%= link_to gravatar_for(current_user, size: 50), current_user %>
-<h1><%= current_user.name %></h1>
-<span><%= link_to "view my profile", current_user %></span>
-<span>Submitted <%= pluralize(current_user.issues.count, "case") %></span>
+<h1>
+    <%= gravatar_for @customer %>
+    <%= @customer.name %>
+</h1>
+<span><%= @customer.mobile_number %></span>
+<span><%= @customer.address %></span>
+<% if current_user && current_user?(@customer) %>
+    <span><%= link_to "Edit Profile", edit_customer_path(@customer) %></span>
+    <%= link_to "Delete Profile", @customer, method: :delete, data: { confirm: "You sure?" } %>  
+<% end %>

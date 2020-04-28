@@ -1,21 +1,9 @@
 <% provide(:title, "Home") %>
-<% if logged_in? %>
-<div class="row justify-content-center">
-    <aside class="col-md-4">
-      <section class="customer_info">
-        <%= render 'shared/customer_info' %>
-      </section>
-      <section class="issue_form">
-        <%= render 'shared/issue_form' %>
-      </section>
-    </aside>
-</div>
-<% else %>
-  <div class="center jumbotron bg-white">
-    <h1 class="display-4">NCI Soccer Games</h1>
-    <p class="lead">Customer Support Application</p>
-    <p class="lead">
+<div class="center jumbotron bg-white mt-5">
+  <h1 class="display-4">Soccer Games Support</h1>
+  <p class="lead">Customer Support Application</p>
+  <p class="lead">
       <%= link_to "Sign Up Now!", signup_path, class: "btn btn-primary btn-lg" %>
-    </p>
-  </div>
-<% end %>
+  </p>
+</div>
+

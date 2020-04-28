@@ -2,25 +2,26 @@
 <div class = "row">
   <aside class = "col-md-4">
     <section class = "user_info">
-      <h1>
-      <%= gravatar_for @customer %>
-      <%= @customer.name %>
-      </h1>
-      <% if current_user && (current_user.admin? || current_user?(@customer)) %>
-        <p><%= @customer.mobile_number %></p>
-      <% end %>
+      <%= render 'shared/customer_info' %>
     </section>
+    <% if current_user && current_user?(@customer) %>
+      <section class="issue_form">
+        <%= render 'shared/issue_form' %>
+      </section>
+    <% end %>
   </aside>
   <div class="col-md-8">
     <% if @customer.issues.any? %>
-      <h3>Case History: <%= @customer.issues.count %> Requests</h3>
+      <h4 class = "row justify-content-center mt-2">Case History: <%= @customer.issues.count %> Requests</h4>
         <div class="issues col">
         <%= render @issues %>
         </div>
       <nav class =  'row justify-content-center'>
         <%= will_paginate(@issues, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer, class: 'pagination-sm') %>
       </nav>
-      <% end %>
+    <% else %>
+      <h3 class = "row justify-content-center mt-2">Case History: 0 Requests</h3>
+    <% end %>
   </div>
 
 </div>

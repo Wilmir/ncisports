@@ -1,5 +1,5 @@
 <%= form_with(url: login_path, scope: :session, local: true, class: "form-inline") do |f| %>
-    <div class="form-group mb-2">
+  <div class="form-group mb-2">
     <%= f.label :email, class:"sr-only" %>
     <%= f.email_field :email, placeholder: "Email", class:'form-control' %>
   </div>

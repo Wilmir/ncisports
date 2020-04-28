@@ -46,7 +46,6 @@ module SessionsHelper
         customer && customer == current_user
     end
 
-
     # Redirects to stored location (or to the default).
     def redirect_back_or(default)
         redirect_to(session[:forwarding_url] || default)

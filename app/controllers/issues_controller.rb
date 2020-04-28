@@ -12,7 +12,9 @@ class IssuesController < ApplicationController
             flash[:success] = "New issue has been submitted!"
             redirect_to current_user
         else
-            render 'static_pages/home'
+            @customer = current_user
+            @issues = @customer.issues.paginate(page: params[:page], per_page: 10)
+            render 'customers/show'
         end
     end
 
