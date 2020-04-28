@@ -2,7 +2,7 @@ class IssuesController < ApplicationController
     before_action :logged_in_customer, only: [:create, :destroy]
     
     def index
-        @issues = Issue.paginate(page: params[:page], per_page: 10)
+        @issues = Issue.where(status: "New").paginate(page: params[:page], per_page: 10)
     end
 
     def create

@@ -2,6 +2,6 @@
     <%= render 'shared/error_messages', object: f.object %>
     <%= f.select :issue_type, ["Book A Game", "Cancel Booking", "Request a Refund", "Feedback", "Other"], { include_blank: 'Issue Type' }, {  id: :issue_type,  class: "custom-select mb-3" } %>
     <%= f.text_field :title, placeholder: "Soccer League Name", class: "form-control" %>
-    <%= f.text_area :description, placeholder: "Describe your issue", class: "form-control" %>
+    <%= f.text_area :description, placeholder: "Describe your request", class: "form-control" %>
     <%= f.submit "Submit A New Case", class: "btn btn-primary" %>
 <% end %>

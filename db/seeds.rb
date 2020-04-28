@@ -27,7 +27,7 @@ customers = Customer.order(:created_at).take(10)
 
 customers.each do |customer|
     10.times do |n|
-        issue_type = "Refund"
+        issue_type = "Request A Refund"
         issue_rand = rand(1..5)
         case issue_rand
         when 1
@@ -35,7 +35,7 @@ customers.each do |customer|
         when 2
             issue_type = "Cancel Booking"
         when 3
-            issue_type = "Refund"
+            issue_type = "Request A Refund"
         when 4
             issue_type = "Feedback"
         when 5
