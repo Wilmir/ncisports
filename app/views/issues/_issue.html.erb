@@ -13,10 +13,26 @@
 <div class = "card-body">
   <div class="card-title d-flex flex-column w-100">
     <div class="d-flex w-100 justify-content-between">
-      <h5><%= link_to issue.issue_type, "#" %></h5>
-      <small class = "text-primary">
-        <%= link_to "Case No. #{issue.id}", "#" %>
-      </small>
+      <h5><%= link_to "Case# #{issue.id} : #{issue.issue_type}", "#" %></h5>
+      <div>
+          <%if current_user %>
+            <div class="btn-group">
+                <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Action
+                </button>
+                <div class="dropdown-menu">
+                        <%= link_to "View", "#", class: "dropdown-item" %>
+                        <%= link_to "Escalate", "#", class: "dropdown-item" %>
+                        <%= link_to "Mark As Resolved", "#", class: "dropdown-item" %>
+                    <% if current_user?(issue.customer) || current_user.admin? %>
+                      <div class="dropdown-divider"></div>
+                      <%= link_to "Edit", "#", class: "dropdown-item" %>
+                      <%= link_to "Delete", "#", class: "dropdown-item" %>                  
+                    <% end %>
+                </div>
+            </div>
+          <% end %>
+      </div>
     </div>
     <div>   
       <span class="badge <%= badgetype %>">
@@ -25,6 +41,8 @@
       <small class = "text-muted">Sent by <%= link_to issue.customer.name, issue.customer %> <%= time_ago_in_words(issue.created_at)%> ago.</small>
     </div>
   </div>
-  <div class="card-text mb-1 text-dark text-secondary"><%= issue.title %></div>
+  <div class = "d-flex flex-column">
+    <div class="card-text mb-2 text-dark text-secondary"><%= issue.title %></div>
   </div>
+</div>
 </div>

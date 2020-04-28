@@ -1,0 +1,14 @@
+<div class="btn-group">
+    <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Actions
+    </button>
+    <div class="dropdown-menu">
+        <% if current_user?(Customer.find(issue.customer_id)) %>
+            <%= link_to "View", "#", class: "dropdown-item" %>
+            <%= link_to "Edit", "#", class: "dropdown-item" %>
+            <%= link_to "Delete", "#", class: "dropdown-item" %>
+        <% end %>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#">Separated link</a>
+    </div>
+</div>
