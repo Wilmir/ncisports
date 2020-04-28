@@ -6,7 +6,10 @@
   <nav>
     <ul>
       <li><%= link_to "About",   about_path %></li>
-      <li><%= link_to "Contact", 'https://www.linkedin.com/in/wilmirnicanor/', target: "_blank" %></li>
+      <% unless logged_in? %>
+        <li><%= link_to "Sign Up",   login_path %></li>
+        <li><%= link_to "Log In", login_path%></li>
+      <% end %>
     </ul>
   </nav>
-</footer>
+</footer> 
