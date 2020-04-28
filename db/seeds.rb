@@ -1,4 +1,4 @@
-# Create a main sample user.
+# Create a the admin user.
 Customer.create!(name:  "Wilmir Nicanor",
              email: "wbnicanor01@gmail.com",
              address: "Dublin, Ireland",
@@ -24,7 +24,6 @@ end
 
 # Generate a bunch of issues
 customers = Customer.order(:created_at).take(10)
-
 
 customers.each do |customer|
     10.times do |n|
