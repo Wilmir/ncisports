@@ -2,7 +2,7 @@
 <h5 class=\"mb-1\">#{issue.title}</h5>
 <small>#{issue.issue_type}</small>
 </div>
-<p class=\"mb-1\">#{issue.description}</p>
+<p class=\"mb-1\">#{issue.description.truncate(150)}</p>
 <small>Reported #{time_ago_in_words(issue.created_at)} ago.</small>".html_safe, 
     "#", class:"list-group-item list-group-item-action", id: "issue-#{issue.id}"%>
 

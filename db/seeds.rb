@@ -23,12 +23,12 @@ Customer.create!(name:  "Wilmir Nicanor",
 end
 
 # Generate a bunch of issues
-customers = Customer.order(:created_at).take(5)
+customers = Customer.order(:created_at).take(10)
 20.times do |n|
     issue_type = "Refund"
     status = Faker::Subscription.status
     title = Faker::Sports::Football.competition
-    description = Faker::Lorem.paragraph(sentence_count: 2)
+    description = Faker::Quote.matz
     customers.each do |customer|
         customer.issues.create!(issue_type:  issue_type,
                                 status:  status,
