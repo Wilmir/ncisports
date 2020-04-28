@@ -1,9 +1,11 @@
 <% provide(:title, "Customers") %>
 <h1>Customers</h1>
 
-<ul class="customers">
+<div class = "d-flex flex-row justify-content-center pd-3 border rounded-lg">
+<div class="customers col-12">
   <%= render @customers %>
-</ul>
+</div>
+</div>
 
 <nav class =  'row justify-content-center'>
 <%= will_paginate(:renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer, class: 'pagination-sm') %>

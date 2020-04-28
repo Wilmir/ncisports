@@ -1,7 +1,18 @@
-<li>
-  <%= gravatar_for customer, size: 50 %>
-  <%= link_to customer.name, customer %>
+<div class="d-flex flex-row justify-content-between p-3 m-2 border-bottom">
+  <div class="d-flex flex-row">
+    <div class = "mr-2">
+      <%= link_to gravatar_for(customer, size: 50), customer %>
+    </div>
+    <div class="d-flex flex-column">
+      <%= link_to customer.name, customer %>
+      <%= customer.address %>
+    </div>
+  </div>
+  <div class= "d-flex flex-column">
+  <%= link_to "View Profile", customer, class:"btn btn-light btn-sm mb-1 text-primary" %>   
   <% if current_user && (current_user.admin? || current_user?(customer)) %>
-    | <%= link_to "delete", customer, method: :delete, data: { confirm: "You sure?" } %>   
+    <%= link_to "Edit Profile", edit_customer_path(customer), class:"btn btn-light btn-sm mb-1 text-dark" %>   
+    <%= link_to current_user.admin? ? "Suspend": "Delete", customer, method: :delete, data: { confirm: "Are you sure? Confirming will permanently delete the profile." }, class:"btn btn-light btn-sm text-danger" %>   
   <% end %>
-</li> 
+  </div>
+</div> 

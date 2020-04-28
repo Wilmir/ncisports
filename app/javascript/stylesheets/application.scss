@@ -17,7 +17,7 @@
 
 
 /* microposts */
-.card{
+.profile-card, .card{
     &:hover{
         border: 1px solid transparent;
         box-shadow: 0px 0px 10px #e5e5e5;
