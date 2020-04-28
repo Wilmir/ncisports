@@ -13,8 +13,8 @@
   </aside>
   <div class="col-md-8">
     <% if @customer.issues.any? %>
-      <h3>Cases (<%= @customer.issues.count %>)</h3>
-        <div class="issues list-group">
+      <h3>Open  Cases (<%= @customer.issues.count %>)</h3>
+        <div class="issues col">
         <%= render @issues %>
         </div>
       <nav class =  'row justify-content-center'>
