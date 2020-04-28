@@ -84,12 +84,12 @@ class CustomersController < ApplicationController
     # Confirms the correct customer.
     def correct_customer
         @customer = Customer.find(params[:id])
-        redirect_to(root_url) unless current_user?(@customer)
+        redirect_to(root_url) unless (current_user?(@customer) || current_user.admin?)
     end
 
     # Confirms an admin user.
     def admin_user
-      redirect_to(root_url) unless (current_user?(@customer) || current_user.admin)
+      redirect_to(root_url) unless (current_user?(@customer) || current_user.admin?)
     end
 
 end
