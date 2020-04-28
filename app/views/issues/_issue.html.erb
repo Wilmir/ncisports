@@ -1,10 +1,34 @@
+<% badgetype = "badge-primary" %>
+
+<% case issue.status.downcase %>
+<% when "active" %>
+  <% badgetype = "badge-success" %>
+<% when "pending" %>
+  <% badgetype = "badge-warning" %>
+<% when "idle" %>
+  <% badgetype = "badge-secondary" %>
+<% when "blocked" %>
+  <% badgetype = "badge-danger" %>
+<% end %>
+
 <div class="card mb-3", id="issue-<%=issue.id %>">
 <div class = "card-body">
-  <div class="card-title d-flex w-100 justify-content-between">
-  <h5 class=\"text-dark mb-1\"><%=issue.title%></h5>
-  <small class = "text-primary"><%= link_to "Case No. #{issue.id}", "#" %></small>
+  <div class="card-title d-flex flex-column w-100">
+    <div class="d-flex w-100 justify-content-between">
+      <h5 class=\"text-dark\">
+        <%= link_to "#{issue.issue_type} - #{issue.title}", "#" %>
+      </h5>
+      <small class = "text-primary">
+        <%= link_to "Case No. #{issue.id}", "#" %>
+      </small>
+    </div>
+    <div>   
+      <span class="badge <%= badgetype %>">
+        <%= issue.status %>
+      </span>
+      <small class = "text-muted">Reported by <%= link_to issue.customer.name, "#" %> <%= time_ago_in_words(issue.created_at)%> ago.</small>
+    </div>
   </div>
   <div class="card-text mb-1 text-dark text-secondary"><%=issue.description.truncate(150)%></div>
-  <small class = "text-muted">Reported by <%= link_to issue.customer.name, "#" %> <%= time_ago_in_words(issue.created_at)%> ago.</small>
-</div>
+  </div>
 </div>
