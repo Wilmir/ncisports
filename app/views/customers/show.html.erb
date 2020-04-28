@@ -6,19 +6,21 @@
       <%= gravatar_for @customer %>
       <%= @customer.name %>
       </h1>
-      <% if current_user.admin || current_user?(@customer) %>
+      <% if current_user && (current_user.admin? || current_user?(@customer)) %>
         <p><%= @customer.mobile_number %></p>
       <% end %>
     </section>
   </aside>
   <div class="col-md-8">
     <% if @customer.issues.any? %>
-      <h3>Issues (<%= @customer.issues.count %>)</h3>
-      <ol class="issues">
+      <h3>Cases (<%= @customer.issues.count %>)</h3>
+        <div class="issues list-group">
         <%= render @issues %>
-      </ol>
-      <%= will_paginate @issues %>
-    <% end %>
+        </div>
+      <nav class =  'row justify-content-center'>
+        <%= will_paginate(@issues, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer, class: 'pagination-sm') %>
+      </nav>
+      <% end %>
   </div>
 
 </div>

@@ -1,10 +1,8 @@
 <% provide(:title, "Customers") %>
-<p id="notice"><%= notice %></p>
-
 <h1>Customers</h1>
 
 <nav class =  'row justify-content-end'>
-<%= will_paginate(@things, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer, class: 'pagination-sm') %>
+<%= will_paginate(:renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer, class: 'pagination-sm') %>
 </nav>
 
 <ul class="customers">
@@ -12,5 +10,5 @@
 </ul>
 
 <nav class =  'row justify-content-end'>
-<%= will_paginate(@things, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer, class: 'pagination-sm') %>
+<%= will_paginate(:renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer, class: 'pagination-sm') %>
 </nav>

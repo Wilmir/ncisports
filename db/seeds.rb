@@ -26,10 +26,12 @@ end
 customers = Customer.order(:created_at).take(5)
 20.times do |n|
     issue_type = "Refund"
-    title = Faker::Commerce.product_name
+    status = Faker::Subscription.status
+    title = Faker::Sports::Football.competition
     description = Faker::Lorem.paragraph(sentence_count: 2)
     customers.each do |customer|
         customer.issues.create!(issue_type:  issue_type,
+                                status:  status,
                                 title: title,
                                 description: description)
     end
