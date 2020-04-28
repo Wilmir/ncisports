@@ -26,7 +26,7 @@
       <span class="badge <%= badgetype %>">
         <%= issue.status %>
       </span>
-      <small class = "text-muted">Reported by <%= link_to issue.customer.name, "#" %> <%= time_ago_in_words(issue.created_at)%> ago.</small>
+      <small class = "text-muted">Reported by <%= link_to issue.customer.name, issue.customer %> <%= time_ago_in_words(issue.created_at)%> ago.</small>
     </div>
   </div>
   <div class="card-text mb-1 text-dark text-secondary"><%=issue.description.truncate(150)%></div>
