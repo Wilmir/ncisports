@@ -8,8 +8,22 @@ Customer.create!(name:  "Wilmir Nicanor",
              admin: true)
 
 # Generate a bunch of additional users.
-20.times do |n|
-  name  = Faker::TvShows::RuPaul.queen
+300.times do |n|
+    name_rand = rand(1..5)
+    name  = Faker::TvShows::RuPaul.queen
+    case name_rand
+    when 1
+        name = Faker::TvShows::GameOfThrones.character
+    when 2
+        name = Faker::Sports::Basketball.player
+    when 3
+        name = Faker::TvShows::Simpsons.character
+    when 4
+        name = Faker::TvShows::StrangerThings.character
+    when 5
+        name  = Faker::TvShows::RuPaul.queen
+    end
+
   email = "customer-#{n+1}@ncisports.com"
   address = Faker::Address.full_address
   mobile_number = Faker::PhoneNumber.cell_phone
@@ -52,8 +66,20 @@ customers.each do |customer|
         when 3
             status = "Resolved"
         end
-        title = Faker::Sports::Football.competition + " : " + Faker::Sports::Football.team + " vs "  + Faker::Sports::Football.team 
+
         description = Faker::TvShows::TheITCrowd.quote
+        description_rand = rand(1..3)
+        case description_rand
+        when 1
+            description = Faker::TvShows::TheITCrowd.quote + " " + Faker::TvShows::RuPaul.quote
+        when 2
+            description = Faker::TvShows::StrangerThings.quote + " " + Faker::TvShows::TheITCrowd.quote
+        when 3
+            description = Faker::TvShows::RuPaul.quote + " " + Faker::TvShows::StrangerThings.quote
+        end
+
+
+        title = Faker::Sports::Football.competition + " : " + Faker::Sports::Football.team + " vs "  + Faker::Sports::Football.team 
         customer.issues.create!(issue_type:  issue_type,
                                 status:  status,
                                 title: title,
