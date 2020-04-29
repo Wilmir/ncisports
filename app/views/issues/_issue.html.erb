@@ -24,7 +24,7 @@
       <span class="badge <%= badgetype %>">
         <%= issue.status %>
       </span>
-      <small class = "text-muted">Sent by <%= link_to issue.customer.name, issue.customer %> <%= time_ago_in_words(issue.created_at)%> ago.</small>
+      <small class = "text-muted">Reported by <%= link_to issue.customer.name, issue.customer %> <%= time_ago_in_words(issue.created_at)%> ago.</small>
     </div>
   </div>
   <div class = "d-flex flex-column">
@@ -32,8 +32,12 @@
       <%= "Game:  " if params[:controller] == "issues" %>
       <%= issue.title %>
     </div>
-    <% if params[:controller] == "issues" %>
-      <p class="mb-2 mt-2 lead"><strong>Issue Description:</strong> <%= issue.description %></p>
+    <% if params[:controller] == "issues" && params[:action] == "show" %>
+        <% if current_user %>
+          <p class="mb-2 mt-2 lead"><strong>Reporter Name:</strong> <%= issue.customer.name %></p>
+          <p class="mb-2 mt-2 lead"><strong>Email:</strong> <%= issue.customer.email %></p>
+        <% end %>
+        <p class="mb-2 mt-2 lead"><strong>Issue Description:</strong> <%= issue.description %></p>
         <% if current_user %>
           <%= render 'issues/issue_buttons', issue: issue %>
         <% end %>
