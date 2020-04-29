@@ -32,7 +32,7 @@
       <%= "Game:  " if params[:controller] == "issues" %>
       <%= issue.title %>
     </div>
-    <% if params[:controller] == "issues" && params[:action] == "show" %>
+    <% if params[:controller] == "issues" && (params[:action] == "show" || params[:action] == "index") %>
         <% if current_user %>
           <p class="mb-2 mt-2 lead"><strong>Reporter Name:</strong> <%= issue.customer.name %></p>
           <p class="mb-2 mt-2 lead"><strong>Email:</strong> <%= issue.customer.email %></p>
