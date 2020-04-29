@@ -37,10 +37,10 @@ Customer.create!(name:  "Wilmir Nicanor",
 end
 
 # Generate a bunch of issues
-customers = Customer.order(:created_at).take(10)
+customers = Customer.order(:created_at).take(100)
 
 customers.each do |customer|
-    10.times do |n|
+    5.times do |n|
         issue_type = "Request A Refund"
         issue_rand = rand(1..5)
         case issue_rand
