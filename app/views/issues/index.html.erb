@@ -1,5 +1,5 @@
 <% provide(:title, "Cases") %>
-<h1>Open Cases</h1>
+<h1><%= pluralize(@issues.count, 'Open Case') %></h1>
 <div class="issues col">
 <%= render @issues %>
 <nav class =  'row justify-content-center'>

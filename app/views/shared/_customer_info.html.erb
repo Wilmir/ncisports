@@ -2,6 +2,7 @@
     <div class="mb-3"><%= gravatar_for @customer %></div>
     <h4><%= @customer.name %></h4>
     <span class="text-dark text-center mb-2"><%= @customer.mobile_number %></span>
+    <span class="text-dark text-center mb-2"><%= @customer.email %></span>
     <span class="text-dark text-center mb-2"><%= @customer.address %></span>
     <% if current_user && (current_user.admin? or current_user?(@customer)) %>
     <small>
