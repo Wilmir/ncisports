@@ -1,6 +1,6 @@
 class IssuesController < ApplicationController
     before_action :logged_in_customer, only: [:create, :destroy]
-    before_action :correct_user,   only: [:edit, :update, :destroy]
+    before_action :correct_user,   only: [:edit, :update, :destroy, :escalate, :resolve]
     
     def index
         @issues = Issue.where(status: "New").paginate(page: params[:page], per_page: 10)
@@ -34,6 +34,27 @@ class IssuesController < ApplicationController
             render 'edit'
         end
     end
+
+    def escalate
+        @issue.status = "Pending"
+        if @issue.save
+            flash[:success] = "The issue has been escalated and its status is Pending!"
+        else
+            flash[:success] = "Escalation has failed"
+        end
+        redirect_to request.referrer || root_url
+    end
+
+    def resolve
+        @issue.status = "Resolved"
+        if @issue.save
+            flash[:success] = "The issue has now been resolved"
+        else
+            flash[:success] = "Resolution has failed"
+        end
+        redirect_to request.referrer || root_url
+    end
+
 
     def destroy
         @issue.destroy

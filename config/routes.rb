@@ -9,4 +9,8 @@ Rails.application.routes.draw do
   delete 'logout', to: 'sessions#destroy'
   resources :customers
   resources :issues
+  get 'issues/:id/resolve', to: 'issues#resolve'
+  get 'issues/:id/escalate', to: 'issues#escalate'
+
+
 end
