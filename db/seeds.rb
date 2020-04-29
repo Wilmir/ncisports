@@ -73,9 +73,9 @@ customers.each do |customer|
         when 1
             description = Faker::TvShows::TheITCrowd.quote + " " + Faker::TvShows::RuPaul.quote
         when 2
-            description = Faker::TvShows::StrangerThings.quote + " " + Faker::TvShows::TheITCrowd.quote
+            description = Faker::TvShows::SiliconValley.quote + " " + Faker::TvShows::TheITCrowd.quote
         when 3
-            description = Faker::TvShows::RuPaul.quote + " " + Faker::TvShows::StrangerThings.quote
+            description = Faker::TvShows::RuPaul.quote + " " + Faker::TvShows::SiliconValley.motto
         end
 
 
