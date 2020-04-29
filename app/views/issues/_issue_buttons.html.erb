@@ -1,6 +1,8 @@
 <div class = "d-flex justify-content-center mt-2 border-top pt-2">
 <%= link_to "Escalate", {controller: "issues", action: "escalate", id: issue.id}, class:"btn btn-warning m-1" %>
 <%= link_to "Mark As Resolved", {controller: "issues", action: "resolve", id: issue.id}, class:"btn btn-success m-1" %>  
-<%= link_to "Edit", edit_issue_path(issue), class:"btn btn-primary m-1" %>   
-<%= link_to "Delete", issue, method: :delete, data: { confirm: "Are you sure? Confirming will permanently delete the case." }, class:"btn btn-danger m-1" %>   
+<% if (current_user.admin? || current_user?(issue.customer)) %>
+    <%= link_to "Edit", edit_issue_path(issue), class:"btn btn-primary m-1" %>   
+    <%= link_to "Delete", issue, method: :delete, data: { confirm: "Are you sure? Confirming will permanently delete the case." }, class:"btn btn-danger m-1" %>   
+<% end %>
 </div>

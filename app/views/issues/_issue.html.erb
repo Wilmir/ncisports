@@ -34,7 +34,7 @@
     </div>
     <% if params[:controller] == "issues" %>
       <p class="mb-2 mt-2 lead"><strong>Issue Description:</strong> <%= issue.description %></p>
-        <% if current_user && (current_user.admin? || current_user?(issue.customer)) %>
+        <% if current_user %>
           <%= render 'issues/issue_buttons', issue: issue %>
         <% end %>
     <% end %>
