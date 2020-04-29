@@ -11,7 +11,7 @@
   <div class= "d-flex flex-column">
   <%= link_to "View Profile", customer, class:"btn btn-light btn-sm mb-1 text-primary" %>   
   <% if current_user && (current_user.admin? || current_user?(customer)) %>
-    <%= link_to "Edit Profile", edit_customer_path(customer), class:"btn btn-light btn-sm mb-1 text-dark" %>   
+    <%= link_to "Edit Profile", edit_customer_path(customer), class:"btn btn-light btn-sm mb-1 text-primary" %>   
     <%= link_to current_user.admin? ? "Suspend": "Delete", customer, method: :delete, data: { confirm: "Are you sure? Confirming will permanently delete the profile." }, class:"btn btn-light btn-sm text-danger" %>   
   <% end %>
   </div>

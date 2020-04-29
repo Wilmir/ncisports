@@ -76,20 +76,20 @@ class CustomersController < ApplicationController
       @customer = Customer.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def customer_params
-      params.require(:customer).permit(:name, :email, :password, :password_confirmation, :address, :mobile_number)
-    end
-
     # Confirms the correct customer.
     def correct_customer
-        @customer = Customer.find(params[:id])
-        redirect_to(root_url) unless (current_user?(@customer) || current_user.admin?)
+      @customer = Customer.find(params[:id])
+      redirect_to(root_url) unless (current_user?(@customer) || current_user.admin?)
     end
-
+    
     # Confirms an admin user.
     def admin_user
       redirect_to(root_url) unless (current_user?(@customer) || current_user.admin?)
+    end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def customer_params
+      params.require(:customer).permit(:name, :email, :password, :password_confirmation, :address, :mobile_number)
     end
 
 end
