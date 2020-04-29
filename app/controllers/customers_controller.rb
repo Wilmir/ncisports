@@ -72,7 +72,7 @@ class CustomersController < ApplicationController
   def downgrade
     @customer.admin = false
     if @customer.save
-      flash[:success] = "Customer has been downgraded to an admin."
+      flash[:success] = "Customer has been downgraded to a regular user."
     else
       flash[:danger] = "Failed to remove admin role"
     end

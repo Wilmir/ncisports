@@ -21,7 +21,7 @@
   <% end %>
   <% if current_user && current_user.admin? %>
     <% if customer.admin? %>
-      <%= link_to "Remove Admin Role", {controller: "customers", action: "downgrade", id:customer.id}, class:"btn btn-light btn-sm mb-1 text-success" %>   
+      <%= link_to "Remove Admin Role", {controller: "customers", action: "downgrade", id:customer.id}, class:"btn btn-light btn-sm mb-1 text-info" %>   
     <% else %>
       <%= link_to "Upgrade to Admin", {controller: "customers", action: "upgrade", id:customer.id}, class:"btn btn-light btn-sm mb-1 text-success" %>   
     <% end %>
