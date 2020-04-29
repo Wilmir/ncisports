@@ -15,11 +15,11 @@ Customer.create!(name:  "Wilmir Nicanor",
     when 1
         name = Faker::TvShows::GameOfThrones.character
     when 2
-        name = Faker::Sports::Basketball.player
+        name = Faker::TvShows::TheITCrowd.character
     when 3
-        name = Faker::TvShows::Simpsons.character
+        name = Faker::TvShows::TheITCrowd.actor
     when 4
-        name = Faker::TvShows::StrangerThings.character
+        name = Faker::TvShows::SiliconValley.character
     when 5
         name  = Faker::TvShows::RuPaul.queen
     end
