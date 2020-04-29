@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   resources :issues
   get 'issues/:id/resolve', to: 'issues#resolve'
   get 'issues/:id/escalate', to: 'issues#escalate'
+  get 'customer/:id/upgrade', to: 'customers#upgrade'
+  get 'customer/:id/downgrade', to: 'customers#downgrade'
 
 
 end

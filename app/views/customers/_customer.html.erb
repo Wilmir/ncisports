@@ -4,7 +4,12 @@
       <%= link_to gravatar_for(customer, size: 50), customer %>
     </div>
     <div class="d-flex flex-column">
-      <%= link_to customer.name, customer %>
+      <div class = "d-flex flex-row">
+        <%= link_to customer.name, customer %>
+        <% if customer.admin? %>
+          <h6 class="badge badge-success ml-2"> admin </h6>
+        <% end %>
+      </div>
       <%= customer.address %>
     </div>
   </div>
@@ -12,7 +17,14 @@
   <%= link_to "View Profile", customer, class:"btn btn-light btn-sm mb-1 text-primary" %>   
   <% if current_user && (current_user.admin? || current_user?(customer)) %>
     <%= link_to "Edit Profile", edit_customer_path(customer), class:"btn btn-light btn-sm mb-1 text-primary" %>   
-    <%= link_to current_user.admin? ? "Suspend": "Delete", customer, method: :delete, data: { confirm: "Are you sure? Confirming will permanently delete the profile." }, class:"btn btn-light btn-sm text-danger" %>   
+    <%= link_to current_user.admin? ? "Suspend": "Delete", customer, method: :delete, data: { confirm: "Are you sure? Confirming will permanently delete the profile." }, class:"btn btn-light btn-sm text-danger mb-1" %>   
+  <% end %>
+  <% if current_user && current_user.admin? %>
+    <% if customer.admin? %>
+      <%= link_to "Remove Admin Role", {controller: "customers", action: "downgrade", id:customer.id}, class:"btn btn-light btn-sm mb-1 text-success" %>   
+    <% else %>
+      <%= link_to "Upgrade to Admin", {controller: "customers", action: "upgrade", id:customer.id}, class:"btn btn-light btn-sm mb-1 text-success" %>   
+    <% end %>
   <% end %>
   </div>
 </div> 

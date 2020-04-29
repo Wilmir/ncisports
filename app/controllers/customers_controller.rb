@@ -1,8 +1,8 @@
 class CustomersController < ApplicationController
-  before_action :set_customer, only: [:show, :edit, :update, :destroy]
+  before_action :set_customer, only: [:show, :edit, :update, :destroy, :upgrade, :downgrade]
   before_action :logged_in_customer, only: [:index, :edit, :update]
-  before_action :correct_customer,   only: [:edit, :update]
-  before_action  :admin_user, only: :destroy
+  before_action :correct_customer,   only: [:edit, :update, :destroy]
+  before_action  :admin_user, only: [:upgrade, :downgrade]
 
   # GET /customers
   # GET /customers.json
@@ -59,6 +59,27 @@ class CustomersController < ApplicationController
     end
   end
 
+  def upgrade
+    @customer.admin = true
+    if @customer.save
+      flash[:success] = "Customer has been upgraded to an admin."
+    else
+      flash[:danger] = "Failed to upgrade the customer to an admin"
+    end
+    redirect_to request.referrer || @customer
+  end
+
+  def downgrade
+    @customer.admin = false
+    if @customer.save
+      flash[:success] = "Customer has been downgraded to an admin."
+    else
+      flash[:danger] = "Failed to remove admin role"
+    end
+    redirect_to request.referrer || @customer
+  end
+
+
   # DELETE /customers/1
   # DELETE /customers/1.json
   def destroy
@@ -84,7 +105,7 @@ class CustomersController < ApplicationController
     
     # Confirms an admin user.
     def admin_user
-      redirect_to(root_url) unless (current_user?(@customer) || current_user.admin?)
+      redirect_to(root_url) unless (current_user.admin?)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
